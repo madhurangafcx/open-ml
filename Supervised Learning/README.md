@@ -29,7 +29,7 @@ Categorizing inputs into discrete classes or labels (e.g., spam vs. ham, tumor b
 | :--- | :--- | :--- | :--- |
 | **Linear Regression** | [`Linear_regression/`](./Linear_regression/) | • [`Linear_regression.ipynb`](./Linear_regression/Linear_regression.ipynb)<br>• [`Programming Exercise 1 - Linear Regression_Full.ipynb`](./Linear_regression/Programming%20Exercise%201%20-%20Linear%20Regression_Full.ipynb) | :white_check_mark: Completed |
 | **Support Vector Machines** | [`Support Vector Machine/`](./Support%20Vector%20Machine/) | • [`SVM Lab sheet - modify.ipynb`](./Support%20Vector%20Machine/SVM%20Lab%20sheet%20-%20modify.ipynb) | :white_check_mark: Completed |
-| **Logistic Regression** | [`logistic_regression/`](./logistic_regression/) | *Notebook coming soon* | :hourglass: In Progress |
+| **Logistic Regression** | [`logistic_regression/`](./logistic_regression/) | • [`logistic_regression_with_missing_values_Feature_Engineering.ipynb`](./logistic_regression/logistic_regression_with_missing_values_Feature_Engineering.ipynb) | :white_check_mark: Completed |
 | **Decision Trees & Ensembles** | `Decision_Trees/` | *Planned* | :black_square_button: Planned |
 
 ---

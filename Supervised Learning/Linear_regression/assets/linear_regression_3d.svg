@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%" style="background:#0f172a; border-radius:12px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="planeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0.15" />
+    </linearGradient>
+    <marker id="arrow3d" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#94a3b8" />
+    </marker>
+  </defs>
+
+  <!-- Title & Subtitle -->
+  <text x="40" y="45" font-size="20" font-weight="bold" fill="#f8fafc">3D Space (2 Features + 1 Target): Flat 2D Regression Plane</text>
+  <text x="40" y="70" font-size="13" fill="#94a3b8">With 2 features, the linear model forms a flat 2D plane tilted through 3D space to minimize squared residuals</text>
+
+  <!-- Coordinate Origin at (160, 370) -->
+  <!-- 3D Axes -->
+  <g stroke="#94a3b8" stroke-width="2">
+    <!-- Vertical Y-axis (Price) -->
+    <line x1="160" y1="370" x2="160" y2="90" marker-end="url(#arrow3d)" />
+    <!-- X1-axis (Square Footage - to the right) -->
+    <line x1="160" y1="370" x2="740" y2="370" marker-end="url(#arrow3d)" />
+    <!-- X2-axis (Bedrooms - angled forward-left) -->
+    <line x1="160" y1="370" x2="60" y2="460" marker-end="url(#arrow3d)" />
+  </g>
+
+  <!-- Axis Labels -->
+  <text x="160" y="75" font-size="14" font-weight="bold" fill="#38bdf8" text-anchor="middle">y (Target: House Price)</text>
+  <text x="730" y="400" font-size="14" font-weight="bold" fill="#818cf8" text-anchor="end">x₁ (Feature 1: Square Footage)</text>
+  <text x="50" y="480" font-size="14" font-weight="bold" fill="#f59e0b" text-anchor="start">x₂ (Feature 2: Bedrooms)</text>
+
+  <!-- Floor Grid (Reference in X1-X2 plane) -->
+  <g stroke="#334155" stroke-width="1" stroke-dasharray="2,2" opacity="0.6">
+    <line x1="280" y1="370" x2="180" y2="460" />
+    <line x1="420" y1="370" x2="320" y2="460" />
+    <line x1="560" y1="370" x2="460" y2="460" />
+    <line x1="110" y1="415" x2="650" y2="415" />
+    <line x1="70" y1="450" x2="610" y2="450" />
+  </g>
+
+  <!-- Tilted 2D Regression Plane (Polygon in 3D) -->
+  <!-- Corners: (220, 310), (660, 180), (560, 350), (120, 430) -->
+  <polygon points="200,280 680,150 600,320 120,440" fill="url(#planeGrad)" stroke="#38bdf8" stroke-width="2" />
+
+  <!-- Internal Plane Grid lines for depth -->
+  <g stroke="#38bdf8" stroke-width="1" opacity="0.35">
+    <line x1="320" y1="247" x2="240" y2="410" />
+    <line x1="440" y1="215" x2="360" y2="380" />
+    <line x1="560" y1="182" x2="480" y2="350" />
+    <line x1="180" y1="320" x2="660" y2="190" />
+    <line x1="160" y1="360" x2="640" y2="230" />
+    <line x1="140" y1="400" x2="620" y2="275" />
+  </g>
+
+  <!-- Residual Drop Lines (Dashed Red between points and plane) -->
+  <!-- Point 1: Above plane -->
+  <line x1="280" y1="230" x2="280" y2="295" stroke="#f43f5e" stroke-width="2" stroke-dasharray="3,3" />
+  <!-- Point 2: Below plane -->
+  <line x1="390" y1="340" x2="390" y2="270" stroke="#f43f5e" stroke-width="2" stroke-dasharray="3,3" />
+  <!-- Point 3: Highlighted Above plane -->
+  <line x1="480" y1="140" x2="480" y2="230" stroke="#f43f5e" stroke-width="2.5" stroke-dasharray="3,3" />
+  <!-- Point 4: Above plane -->
+  <line x1="580" y1="150" x2="580" y2="210" stroke="#f43f5e" stroke-width="2" stroke-dasharray="3,3" />
+
+  <!-- Points on the Plane (Cyan Predictions ŷ) -->
+  <g fill="#38bdf8">
+    <circle cx="280" cy="295" r="4" />
+    <circle cx="390" cy="270" r="4" />
+    <circle cx="480" cy="230" r="5" stroke="#f8fafc" stroke-width="1.5" />
+    <circle cx="580" cy="210" r="4" />
+  </g>
+
+  <!-- Data Points in 3D Space (Amber spheres) -->
+  <g fill="#fbbf24" stroke="#0f172a" stroke-width="1.5">
+    <circle cx="280" cy="230" r="6" />
+    <circle cx="390" cy="340" r="6" />
+    <circle cx="480" cy="140" r="7" stroke="#f8fafc" stroke-width="2" />
+    <circle cx="580" cy="150" r="6" />
+  </g>
+
+  <!-- Plane Formula Callout -->
+  <g>
+    <rect x="420" y="85" width="310" height="38" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" />
+    <text x="430" y="110" font-size="14" font-weight="bold" fill="#38bdf8">Fitted 2D Plane: ŷ = θ₀ + θ₁x₁ + θ₂x₂</text>
+  </g>
+
+  <!-- Residual Callout for Point 3 -->
+  <g>
+    <rect x="505" y="170" width="220" height="50" rx="6" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5" />
+    <text x="515" y="190" font-size="12" font-weight="bold" fill="#f43f5e">Vertical Residual: e = y - ŷ</text>
+    <text x="515" y="208" font-size="11" fill="#cbd5e1">Perpendicular distance to X1-X2 floor</text>
+    <line x1="482" y1="185" x2="505" y2="185" stroke="#f43f5e" stroke-width="1.5" />
+  </g>
+
+  <!-- Bottom Legend -->
+  <g transform="translate(140, 480)">
+    <circle cx="0" cy="0" r="5" fill="#fbbf24" />
+    <text x="12" y="4" font-size="12" fill="#cbd5e1">3D Data Point (x₁, x₂, y)</text>
+
+    <rect x="180" y="-8" width="20" height="16" fill="#38bdf8" fill-opacity="0.4" stroke="#38bdf8" stroke-width="1.5" />
+    <text x="210" y="4" font-size="12" fill="#cbd5e1">2D Regression Plane</text>
+
+    <line x1="370" y1="0" x2="395" y2="0" stroke="#f43f5e" stroke-width="2" stroke-dasharray="3,3" />
+    <text x="405" y="4" font-size="12" fill="#cbd5e1">Vertical Error / Residual (e)</text>
+  </g>
+</svg>

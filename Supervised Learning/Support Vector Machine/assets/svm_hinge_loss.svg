@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 460" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <filter id="glowHinge" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <marker id="axisArrowHinge" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <polygon points="0 0, 8 4, 0 8" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="850" height="460" rx="16" fill="url(#bgGrad4)"/>
+  <rect x="1" y="1" width="848" height="458" rx="15" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Title Badge -->
+  <rect x="230" y="16" width="390" height="34" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1.2"/>
+  <text x="425" y="38" fill="#f8fafc" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="700" text-anchor="middle">
+    HINGE LOSS: MAX(0, 1 - y · f(x)) VS OTHER LOSSES
+  </text>
+
+  <!-- Coordinate Grid & Axes -->
+  <!-- Margin = 0 is at x = 380. Margin = 1 is at x = 540. Margin = -1 is at x = 220. Margin = -2 at x = 60. Margin = 2 at x = 700 -->
+  <!-- y = 0 is at y = 370. y = 1 is at y = 270. y = 2 is at y = 170. y = 3 is at y = 70 -->
+  <g stroke="#334155" stroke-width="1" stroke-dasharray="3,6" opacity="0.5">
+    <line x1="60" y1="70" x2="60" y2="370"/>
+    <line x1="220" y1="70" x2="220" y2="370"/>
+    <line x1="380" y1="70" x2="380" y2="370"/>
+    <line x1="540" y1="70" x2="540" y2="370"/>
+    <line x1="700" y1="70" x2="700" y2="370"/>
+
+    <line x1="60" y1="270" x2="780" y2="270"/>
+    <line x1="60" y1="170" x2="780" y2="170"/>
+    <line x1="60" y1="70" x2="780" y2="70"/>
+  </g>
+
+  <!-- Axes -->
+  <line x1="50" y1="370" x2="800" y2="370" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#axisArrowHinge)"/>
+  <line x1="380" y1="410" x2="380" y2="55" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#axisArrowHinge)"/>
+
+  <!-- Axis Labels -->
+  <text x="805" y="375" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600">z = y · f(x) (Margin)</text>
+  <text x="390" y="60" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600">Loss L(y, f(x))</text>
+
+  <!-- Numerical Ticks -->
+  <text x="380" y="390" fill="#cbd5e1" font-family="system-ui, -apple-system, sans-serif" font-size="12" text-anchor="middle">0</text>
+  <text x="540" y="390" fill="#fbbf24" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" text-anchor="middle">+1 (Margin)</text>
+  <text x="700" y="390" fill="#cbd5e1" font-family="system-ui, -apple-system, sans-serif" font-size="12" text-anchor="middle">+2</text>
+  <text x="220" y="390" fill="#cbd5e1" font-family="system-ui, -apple-system, sans-serif" font-size="12" text-anchor="middle">-1</text>
+  <text x="60" y="390" fill="#cbd5e1" font-family="system-ui, -apple-system, sans-serif" font-size="12" text-anchor="middle">-2</text>
+
+  <text x="360" y="274" fill="#cbd5e1" font-family="system-ui, -apple-system, sans-serif" font-size="12" text-anchor="end">1.0</text>
+  <text x="360" y="174" fill="#cbd5e1" font-family="system-ui, -apple-system, sans-serif" font-size="12" text-anchor="end">2.0</text>
+  <text x="360" y="74" fill="#cbd5e1" font-family="system-ui, -apple-system, sans-serif" font-size="12" text-anchor="end">3.0</text>
+
+  <!-- Zero Loss Zone Shading -->
+  <rect x="540" y="70" width="240" height="300" fill="#10b981" fill-opacity="0.08"/>
+  <text x="660" y="100" fill="#10b981" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" text-anchor="middle">
+    Zero Loss Region: Loss = 0
+  </text>
+  <text x="660" y="120" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="11" text-anchor="middle">
+    Points outside margin produce NO gradient!
+  </text>
+  <text x="660" y="136" fill="#fbbf24" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" text-anchor="middle">
+    (Creates Sparse Support Vectors)
+  </text>
+
+  <!-- 1. 0-1 Loss (Step function at 0) - Grey dashed -->
+  <polyline points="60,270 380,270 380,370 780,370" fill="none" stroke="#64748b" stroke-width="2" stroke-dasharray="6,4"/>
+  <circle cx="380" cy="270" r="4" fill="#64748b"/>
+  <circle cx="380" cy="370" r="4" fill="none" stroke="#64748b" stroke-width="2"/>
+
+  <!-- 2. Logistic Loss / Log Loss (Smooth purple curve) -->
+  <!-- Loss = log2(1 + exp(-z)). At z=-2: 2.15 (155). z=-1: 1.45 (225). z=0: 1.0 (270). z=1: 0.45 (325). z=2: 0.18 (352) -->
+  <path d="M 60,155 Q 220,225 380,270 T 540,325 T 700,355 T 780,365" fill="none" stroke="#a855f7" stroke-width="2.5"/>
+
+  <!-- 3. HINGE LOSS (Thick Glowing Amber/Gold Line) -->
+  <!-- Formula: max(0, 1 - z). From z=-2: loss=3 (y=70). z=1: loss=0 (y=370). From z=1 to 2: loss=0 (y=370) -->
+  <polyline points="60,70 540,370 780,370" fill="none" stroke="#fbbf24" stroke-width="4.5" filter="url(#glowHinge)"/>
+
+  <!-- Support Vector Knee Point at z=1, loss=0 -->
+  <circle cx="540" cy="370" r="7" fill="#fbbf24"/>
+  <text x="540" y="350" fill="#fbbf24" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" text-anchor="middle">
+    Knee Point (z = 1)
+  </text>
+
+  <!-- Legends and Callouts -->
+  <g transform="translate(60, 415)">
+    <line x1="0" y1="10" x2="35" y2="10" stroke="#fbbf24" stroke-width="4"/>
+    <text x="45" y="14" fill="#fbbf24" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">
+      Hinge Loss: max(0, 1 - y · f(x))
+    </text>
+
+    <line x1="280" y1="10" x2="315" y2="10" stroke="#a855f7" stroke-width="2.5"/>
+    <text x="325" y="14" fill="#d8b4fe" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600">
+      Log Loss (Logistic Regression)
+    </text>
+
+    <line x1="560" y1="10" x2="595" y2="10" stroke="#64748b" stroke-width="2" stroke-dasharray="5,3"/>
+    <text x="605" y="14" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600">
+      0-1 Classification Error
+    </text>
+  </g>
+</svg>

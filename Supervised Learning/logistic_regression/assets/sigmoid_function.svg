@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" width="100%" height="100%" style="background:#0f172a; border-radius:12px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="sigGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="50%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#818cf8" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#94a3b8" />
+    </marker>
+  </defs>
+
+  <!-- Title & Subtitle -->
+  <text x="40" y="45" font-size="20" font-weight="bold" fill="#f8fafc">The Sigmoid (Logistic) Function: Mapping Real Values to Probabilities</text>
+  <text x="40" y="70" font-size="13" fill="#94a3b8">The S-shaped curve squashes any real-valued linear score z = θᵀx into a valid probability range [0, 1]</text>
+
+  <!-- Grid Lines -->
+  <g stroke="#334155" stroke-dasharray="3,3" stroke-width="1" opacity="0.6">
+    <line x1="80" y1="120" x2="740" y2="120" />  <!-- y = 1.0 -->
+    <line x1="80" y1="240" x2="740" y2="240" />  <!-- y = 0.5 -->
+    <line x1="80" y1="360" x2="740" y2="360" />  <!-- y = 0.0 -->
+    <line x1="180" y1="90" x2="180" y2="380" /> <!-- z = -4 -->
+    <line x1="290" y1="90" x2="290" y2="380" /> <!-- z = -2 -->
+    <line x1="400" y1="90" x2="400" y2="380" /> <!-- z = 0 -->
+    <line x1="510" y1="90" x2="510" y2="380" /> <!-- z = +2 -->
+    <line x1="620" y1="90" x2="620" y2="380" /> <!-- z = +4 -->
+  </g>
+
+  <!-- Asymptote lines (y=1 and y=0) -->
+  <line x1="80" y1="120" x2="740" y2="120" stroke="#f43f5e" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.8" />
+  <text x="745" y="125" font-size="12" fill="#f43f5e" font-weight="bold">y = 1 (Upper Bound)</text>
+
+  <line x1="80" y1="360" x2="740" y2="360" stroke="#f43f5e" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.8" />
+  <text x="745" y="365" font-size="12" fill="#f43f5e" font-weight="bold">y = 0 (Lower Bound)</text>
+
+  <!-- Axes -->
+  <g stroke="#94a3b8" stroke-width="2">
+    <!-- Y-axis (Probability at z = 0) -->
+    <line x1="400" y1="390" x2="400" y2="85" marker-end="url(#arrow)" />
+    <!-- X-axis (z = θᵀx) -->
+    <line x1="70" y1="360" x2="750" y2="360" marker-end="url(#arrow)" />
+  </g>
+
+  <!-- Axis Labels & Tick Marks -->
+  <text x="390" y="80" font-size="14" font-weight="bold" fill="#38bdf8" text-anchor="end">P(y = 1 | x) = σ(z)</text>
+  <text x="740" y="395" font-size="14" font-weight="bold" fill="#94a3b8" text-anchor="end">z = θᵀx = θ₀ + θ₁x₁ + ...</text>
+
+  <!-- Y-Axis Ticks -->
+  <text x="385" y="125" font-size="12" fill="#cbd5e1" text-anchor="end">1.0</text>
+  <text x="385" y="245" font-size="12" font-weight="bold" fill="#38bdf8" text-anchor="end">0.5</text>
+  <text x="385" y="365" font-size="12" fill="#cbd5e1" text-anchor="end">0.0</text>
+
+  <!-- X-Axis Ticks -->
+  <text x="180" y="380" font-size="12" fill="#94a3b8" text-anchor="middle">-4</text>
+  <text x="290" y="380" font-size="12" fill="#94a3b8" text-anchor="middle">-2</text>
+  <text x="400" y="380" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">0</text>
+  <text x="510" y="380" font-size="12" fill="#94a3b8" text-anchor="middle">+2</text>
+  <text x="620" y="380" font-size="12" fill="#94a3b8" text-anchor="middle">+4</text>
+
+  <!-- Sigmoid Curve -->
+  <!-- z mapped to x: 400 is z=0, 55px per z unit -->
+  <!-- S-curve smooth path -->
+  <path d="M 80 357 C 220 357, 320 330, 400 240 C 480 150, 580 123, 720 123" 
+        fill="none" stroke="url(#sigGrad)" stroke-width="4" filter="url(#glow)" />
+
+  <!-- Decision Threshold at z = 0, P = 0.5 -->
+  <circle cx="400" cy="240" r="6" fill="#38bdf8" stroke="#f8fafc" stroke-width="2" />
+  <line x1="80" y1="240" x2="400" y2="240" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3,3" />
+
+  <!-- Classification Regions -->
+  <!-- Class 0 Region (Left: z < 0) -->
+  <rect x="100" y="150" width="180" height="70" rx="8" fill="#1e293b" stroke="#06b6d4" stroke-width="1" opacity="0.9" />
+  <text x="115" y="175" font-size="13" font-weight="bold" fill="#22d3ee">Class 0 (Negative)</text>
+  <text x="115" y="195" font-size="11" fill="#cbd5e1">z &lt; 0  ⟹  P &lt; 0.5</text>
+  <text x="115" y="210" font-size="11" fill="#94a3b8">Predict: ŷ = 0 (e.g. Benign)</text>
+
+  <!-- Class 1 Region (Right: z > 0) -->
+  <rect x="520" y="240" width="180" height="70" rx="8" fill="#1e293b" stroke="#818cf8" stroke-width="1" opacity="0.9" />
+  <text x="535" y="265" font-size="13" font-weight="bold" fill="#a5b4fc">Class 1 (Positive)</text>
+  <text x="535" y="285" font-size="11" fill="#cbd5e1">z &gt; 0  ⟹  P &gt; 0.5</text>
+  <text x="535" y="300" font-size="11" fill="#94a3b8">Predict: ŷ = 1 (e.g. Malignant)</text>
+
+  <!-- Formula Callout at Top Center -->
+  <g transform="translate(240, 95)">
+    <rect x="0" y="0" width="320" height="36" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" />
+    <text x="160" y="23" font-size="14" font-weight="bold" fill="#38bdf8" text-anchor="middle">σ(z) = 1 / (1 + e⁻ᶻ)</text>
+  </g>
+
+  <!-- Threshold Annotation Callout -->
+  <g transform="translate(320, 260)">
+    <rect x="0" y="0" width="160" height="42" rx="6" fill="#1e293b" stroke="#f59e0b" stroke-width="1" />
+    <text x="10" y="18" font-size="11" font-weight="bold" fill="#f59e0b">Decision Threshold</text>
+    <text x="10" y="33" font-size="10" fill="#cbd5e1">z = 0  ⟹  P = 0.50</text>
+  </g>
+</svg>

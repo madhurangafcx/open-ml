@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" width="100%" height="100%" style="background:#0f172a; border-radius:12px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="hyperGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.1" />
+    </linearGradient>
+    <marker id="arrowVector" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#f59e0b" />
+    </marker>
+    <marker id="arrowProj" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowRes" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#f43f5e" />
+    </marker>
+    <marker id="arrowBasis" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#10b981" />
+    </marker>
+  </defs>
+
+  <!-- Title & Subtitle -->
+  <text x="40" y="45" font-size="20" font-weight="bold" fill="#f8fafc">High Dimensions: The Hyperplane &amp; Orthogonal Projection</text>
+  <text x="40" y="70" font-size="13" fill="#94a3b8">Linear regression finds the closest point on the hyperplane by dropping an orthogonal (perpendicular) residual vector e ⟂ Col(X)</text>
+
+  <!-- Hyperplane Subspace Surface (Green/Cyan polygon) -->
+  <polygon points="120,330 650,210 740,390 210,410" fill="url(#hyperGrad)" stroke="#10b981" stroke-width="2" stroke-dasharray="2,2" />
+
+  <!-- Subspace Label -->
+  <rect x="520" y="340" width="200" height="34" rx="6" fill="#1e293b" stroke="#10b981" stroke-width="1.5" />
+  <text x="530" y="362" font-size="12" font-weight="bold" fill="#34d399">Hyperplane: Col(X) in ℝᵐ</text>
+
+  <!-- Origin Point O at (200, 360) -->
+  <circle cx="200" cy="360" r="4" fill="#94a3b8" />
+  <text x="180" y="375" font-size="13" font-weight="bold" fill="#94a3b8">Origin (0)</text>
+
+  <!-- Basis Vectors on the Hyperplane (Feature vectors X1, X2) -->
+  <line x1="200" y1="360" x2="350" y2="330" stroke="#10b981" stroke-width="2.5" marker-end="url(#arrowBasis)" />
+  <text x="355" y="325" font-size="13" font-weight="bold" fill="#34d399">Feature x₁</text>
+
+  <line x1="200" y1="360" x2="290" y2="395" stroke="#10b981" stroke-width="2.5" marker-end="url(#arrowBasis)" />
+  <text x="300" y="415" font-size="13" font-weight="bold" fill="#34d399">Feature x₂</text>
+
+  <!-- Projection Point ŷ on the Hyperplane at (480, 310) -->
+  <!-- Vector y (Actual Target - reaches up into the ambient space) -->
+  <line x1="200" y1="360" x2="475" y2="135" stroke="#fbbf24" stroke-width="3.5" marker-end="url(#arrowVector)" />
+  <text x="490" y="130" font-size="16" font-weight="bold" fill="#fbbf24">y (Target Vector)</text>
+
+  <!-- Vector ŷ (Projection inside Hyperplane from Origin to ŷ) -->
+  <line x1="200" y1="360" x2="475" y2="310" stroke="#38bdf8" stroke-width="3" marker-end="url(#arrowProj)" />
+  <text x="360" y="360" font-size="14" font-weight="bold" fill="#38bdf8">ŷ = Xθ (Best Projection)</text>
+
+  <!-- Point ŷ dot -->
+  <circle cx="480" cy="310" r="5" fill="#38bdf8" stroke="#f8fafc" stroke-width="1.5" />
+
+  <!-- Residual Vector e (Perpendicular from y down to ŷ) -->
+  <line x1="480" y1="140" x2="480" y2="305" stroke="#f43f5e" stroke-width="3" stroke-dasharray="4,4" marker-end="url(#arrowRes)" />
+
+  <!-- Right Angle Symbol at (480, 310) to show Orthogonality 90° -->
+  <path d="M 480 285 L 455 285 L 455 310" fill="none" stroke="#f43f5e" stroke-width="1.5" />
+  <circle cx="467" cy="297" r="2" fill="#f43f5e" />
+
+  <!-- Residual Callout Box -->
+  <g>
+    <rect x="530" y="170" width="240" height="75" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5" />
+    <text x="540" y="195" font-size="13" font-weight="bold" fill="#f43f5e">Orthogonal Residual: e = y - ŷ</text>
+    <text x="540" y="215" font-size="12" fill="#cbd5e1">e ⟂ Hyperplane  ⟹  Xᵀ(y - Xθ) = 0</text>
+    <text x="540" y="235" font-size="12" font-weight="bold" fill="#38bdf8">Yields: θ = (XᵀX)⁻¹ Xᵀy</text>
+    <line x1="482" y1="210" x2="530" y2="210" stroke="#f43f5e" stroke-width="1.5" />
+  </g>
+
+  <!-- Explanatory note -->
+  <g transform="translate(40, 110)">
+    <rect x="0" y="0" width="250" height="70" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="12" y="24" font-size="12" font-weight="bold" fill="#e2e8f0">Why Normal Equation Works:</text>
+    <text x="12" y="44" font-size="11" fill="#94a3b8">The shortest distance from vector y to</text>
+    <text x="12" y="58" font-size="11" fill="#94a3b8">the hyperplane is the 90° drop.</text>
+  </g>
+</svg>

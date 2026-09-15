@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f87171"/>
+      <stop offset="100%" stop-color="#dc2626"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="500" rx="16" fill="url(#bgGrad3)"/>
+  <rect x="1" y="1" width="898" height="498" rx="15" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Master Title -->
+  <rect x="230" y="14" width="440" height="34" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1.2"/>
+  <text x="450" y="36" fill="#f8fafc" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="700" text-anchor="middle">
+    SVM HYPERPARAMETERS: THE EFFECT OF C AND GAMMA (γ)
+  </text>
+
+  <!-- ==================== TOP ROW: EFFECT OF C (SLACK PENALTY) ==================== -->
+  <!-- Low C Card -->
+  <g transform="translate(40, 65)">
+    <rect width="395" height="195" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+    <text x="20" y="28" fill="#38bdf8" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700">
+      Small C (e.g., C = 0.01) — Soft Margin
+    </text>
+    <text x="20" y="46" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="11">
+      Tolerates margin errors | Wide street | Higher Bias, Low Variance
+    </text>
+
+    <!-- Wide Margin Band -->
+    <polygon points="60,185 240,65 330,65 150,185" fill="#38bdf8" fill-opacity="0.12"/>
+    <!-- Margins & Hyperplane -->
+    <line x1="60" y1="185" x2="240" y2="65" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="150" y1="185" x2="330" y2="65" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="105" y1="185" x2="285" y2="65" stroke="#38bdf8" stroke-width="2.5"/>
+
+    <!-- Data points -->
+    <circle cx="260" cy="140" r="6" fill="url(#blueGrad)"/>
+    <circle cx="310" cy="115" r="6" fill="url(#blueGrad)"/>
+    <circle cx="280" cy="80" r="6" fill="url(#blueGrad)"/>
+    <circle cx="220" cy="155" r="6" fill="url(#blueGrad)"/> <!-- inside margin -->
+
+    <rect x="75" y="105" width="12" height="12" rx="2" fill="url(#redGrad)"/>
+    <rect x="115" y="80" width="12" height="12" rx="2" fill="url(#redGrad)"/>
+    <rect x="50" y="145" width="12" height="12" rx="2" fill="url(#redGrad)"/>
+    <rect x="135" y="125" width="12" height="12" rx="2" fill="url(#redGrad)"/> <!-- inside margin: Slack > 0 -->
+
+    <rect x="235" y="160" width="145" height="24" rx="5" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+    <text x="307" y="176" fill="#38bdf8" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" text-anchor="middle">
+      Wide Margin (Low Overfit)
+    </text>
+  </g>
+
+  <!-- High C Card -->
+  <g transform="translate(465, 65)">
+    <rect width="395" height="195" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+    <text x="20" y="28" fill="#f87171" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700">
+      Large C (e.g., C = 1000) — Hard Margin
+    </text>
+    <text x="20" y="46" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="11">
+      Strictly penalizes errors | Narrow street | Low Bias, High Variance
+    </text>
+
+    <!-- Narrow Margin Band -->
+    <polygon points="90,185 270,65 315,65 135,185" fill="#f87171" fill-opacity="0.12"/>
+    <!-- Margins & Hyperplane -->
+    <line x1="90" y1="185" x2="270" y2="65" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="135" y1="185" x2="315" y2="65" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="112" y1="185" x2="292" y2="65" stroke="#ef4444" stroke-width="2.5"/>
+
+    <!-- Data points (Same points, but plane is forced tightly between them) -->
+    <circle cx="260" cy="140" r="6" fill="url(#blueGrad)"/>
+    <circle cx="310" cy="115" r="6" fill="url(#blueGrad)"/>
+    <circle cx="280" cy="80" r="6" fill="url(#blueGrad)"/>
+    <circle cx="220" cy="155" r="6" fill="url(#blueGrad)"/>
+
+    <rect x="75" y="105" width="12" height="12" rx="2" fill="url(#redGrad)"/>
+    <rect x="115" y="80" width="12" height="12" rx="2" fill="url(#redGrad)"/>
+    <rect x="50" y="145" width="12" height="12" rx="2" fill="url(#redGrad)"/>
+    <rect x="95" y="145" width="12" height="12" rx="2" fill="url(#redGrad)"/>
+
+    <rect x="235" y="160" width="145" height="24" rx="5" fill="#1e293b" stroke="#f87171" stroke-width="1"/>
+    <text x="307" y="176" fill="#f87171" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" text-anchor="middle">
+      Narrow Margin (Overfit Risk)
+    </text>
+  </g>
+
+  <!-- ==================== BOTTOM ROW: EFFECT OF GAMMA (RBF INFLUENCE) ==================== -->
+  <!-- Low Gamma Card -->
+  <g transform="translate(40, 275)">
+    <rect width="395" height="195" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+    <text x="20" y="28" fill="#a855f7" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700">
+      Small Gamma γ (e.g., γ = 0.01) — Smooth Boundary
+    </text>
+    <text x="20" y="46" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="11">
+      Gaussian bell has wide reach | Points far away have influence
+    </text>
+
+    <!-- Smooth flowing non-linear curve -->
+    <path d="M 40, 160 Q 150, 190 200, 130 T 360, 80" fill="none" stroke="#a855f7" stroke-width="3"/>
+
+    <!-- Data points -->
+    <circle cx="220" cy="80" r="6" fill="url(#blueGrad)"/>
+    <circle cx="260" cy="110" r="6" fill="url(#blueGrad)"/>
+    <circle cx="310" cy="70" r="6" fill="url(#blueGrad)"/>
+    <circle cx="340" cy="120" r="6" fill="url(#blueGrad)"/>
+
+    <rect x="80" y="120" width="12" height="12" rx="2" fill="url(#redGrad)"/>
+    <rect x="130" y="150" width="12" height="12" rx="2" fill="url(#redGrad)"/>
+    <rect x="160" y="175" width="12" height="12" rx="2" fill="url(#redGrad)"/>
+    <rect x="230" y="170" width="12" height="12" rx="2" fill="url(#redGrad)"/>
+
+    <rect x="235" y="160" width="145" height="24" rx="5" fill="#1e293b" stroke="#a855f7" stroke-width="1"/>
+    <text x="307" y="176" fill="#d8b4fe" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" text-anchor="middle">
+      Generalized (High Bias)
+    </text>
+  </g>
+
+  <!-- High Gamma Card -->
+  <g transform="translate(465, 275)">
+    <rect width="395" height="195" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+    <text x="20" y="28" fill="#ec4899" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700">
+      Large Gamma γ (e.g., γ = 10.0) — Island Boundary
+    </text>
+    <text x="20" y="46" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="11">
+      Gaussian bell is sharp &amp; narrow | Individual support vector islands
+    </text>
+
+    <!-- Island boundaries tightly wrapping individual points -->
+    <ellipse cx="220" cy="80" rx="24" ry="18" fill="#ec4899" fill-opacity="0.2" stroke="#ec4899" stroke-width="2"/>
+    <ellipse cx="260" cy="110" rx="26" ry="20" fill="#ec4899" fill-opacity="0.2" stroke="#ec4899" stroke-width="2"/>
+    <ellipse cx="320" cy="95" rx="35" ry="32" fill="#ec4899" fill-opacity="0.2" stroke="#ec4899" stroke-width="2"/>
+
+    <!-- Data points -->
+    <circle cx="220" cy="80" r="6" fill="url(#blueGrad)"/>
+    <circle cx="260" cy="110" r="6" fill="url(#blueGrad)"/>
+    <circle cx="310" cy="85" r="6" fill="url(#blueGrad)"/>
+    <circle cx="330" cy="110" r="6" fill="url(#blueGrad)"/>
+
+    <rect x="80" y="120" width="12" height="12" rx="2" fill="url(#redGrad)"/>
+    <rect x="130" y="150" width="12" height="12" rx="2" fill="url(#redGrad)"/>
+    <rect x="160" y="175" width="12" height="12" rx="2" fill="url(#redGrad)"/>
+    <rect x="230" y="170" width="12" height="12" rx="2" fill="url(#redGrad)"/>
+
+    <rect x="235" y="160" width="145" height="24" rx="5" fill="#1e293b" stroke="#ec4899" stroke-width="1"/>
+    <text x="307" y="176" fill="#f472b6" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" text-anchor="middle">
+      Overfitted Islands (High Var)
+    </text>
+  </g>
+</svg>

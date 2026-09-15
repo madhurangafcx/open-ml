@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%" style="background:#0f172a; border-radius:12px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="regionGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.15" />
+      <stop offset="48%" stop-color="#06b6d4" stop-opacity="0.05" />
+      <stop offset="52%" stop-color="#f43f5e" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#f43f5e" stop-opacity="0.18" />
+    </linearGradient>
+    <filter id="glow2" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <marker id="arrow2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#94a3b8" />
+    </marker>
+  </defs>
+
+  <!-- Title & Subtitle -->
+  <text x="40" y="45" font-size="20" font-weight="bold" fill="#f8fafc">2D Feature Space: Linear Decision Boundary</text>
+  <text x="40" y="70" font-size="13" fill="#94a3b8">The model finds a separating line where θ₀ + θ₁x₁ + θ₂x₂ = 0 (Probability P = 0.5) dividing Class 0 and Class 1</text>
+
+  <!-- Plot Area Background with Classification Regions -->
+  <rect x="100" y="90" width="650" height="320" fill="url(#regionGrad)" rx="8" stroke="#334155" stroke-width="1" />
+
+  <!-- Grid lines -->
+  <g stroke="#334155" stroke-dasharray="3,3" stroke-width="1" opacity="0.4">
+    <line x1="100" y1="170" x2="750" y2="170" />
+    <line x1="100" y1="250" x2="750" y2="250" />
+    <line x1="100" y1="330" x2="750" y2="330" />
+    <line x1="260" y1="90" x2="260" y2="410" />
+    <line x1="420" y1="90" x2="420" y2="410" />
+    <line x1="580" y1="90" x2="580" y2="410" />
+  </g>
+
+  <!-- Axes -->
+  <g stroke="#94a3b8" stroke-width="2">
+    <line x1="100" y1="410" x2="100" y2="85" marker-end="url(#arrow2)" />
+    <line x1="95" y1="410" x2="755" y2="410" marker-end="url(#arrow2)" />
+  </g>
+  <text x="90" y="78" font-size="13" font-weight="bold" fill="#e2e8f0" text-anchor="end">x₂ (Feature 2: Tumor Texture)</text>
+  <text x="740" y="435" font-size="13" font-weight="bold" fill="#e2e8f0" text-anchor="end">x₁ (Feature 1: Tumor Radius)</text>
+
+  <!-- Linear Decision Boundary Line: θ0 + θ1*x1 + θ2*x2 = 0 -->
+  <!-- Line from (180, 410) to (680, 90) -->
+  <line x1="180" y1="410" x2="680" y2="90" stroke="#38bdf8" stroke-width="3.5" filter="url(#glow2)" />
+
+  <!-- Region Labels -->
+  <text x="210" y="160" font-size="14" font-weight="bold" fill="#22d3ee" opacity="0.8">Class 0 Region (Benign)</text>
+  <text x="210" y="180" font-size="12" fill="#94a3b8">P(y = 1 | x) &lt; 0.50 (z &lt; 0)</text>
+
+  <text x="530" y="340" font-size="14" font-weight="bold" fill="#f43f5e" opacity="0.8">Class 1 Region (Malignant)</text>
+  <text x="530" y="360" font-size="12" fill="#94a3b8">P(y = 1 | x) &gt; 0.50 (z &gt; 0)</text>
+
+  <!-- Class 0 Data Points (Cyan circles: Benign) -->
+  <g fill="#06b6d4" stroke="#f8fafc" stroke-width="1.5">
+    <circle cx="160" cy="350" r="6" />
+    <circle cx="210" cy="300" r="6" />
+    <circle cx="170" cy="240" r="6" />
+    <circle cx="250" cy="220" r="6" />
+    <circle cx="220" cy="150" r="6" />
+    <circle cx="310" cy="180" r="6" />
+    <circle cx="300" cy="270" r="6" />
+    <circle cx="370" cy="240" r="6" />
+    <circle cx="390" cy="170" r="6" />
+    <circle cx="450" cy="130" r="6" />
+    <circle cx="280" cy="110" r="6" />
+    <circle cx="140" cy="180" r="6" />
+  </g>
+
+  <!-- Class 1 Data Points (Coral Crosses: Malignant) -->
+  <g stroke="#f43f5e" stroke-width="2.5" stroke-linecap="round">
+    <!-- Point 1 -->
+    <line x1="390" y1="360" x2="406" y2="376" /><line x1="406" y1="360" x2="390" y2="376" />
+    <!-- Point 2 -->
+    <line x1="470" y1="330" x2="486" y2="346" /><line x1="486" y1="330" x2="470" y2="346" />
+    <!-- Point 3 -->
+    <line x1="520" y1="270" x2="536" y2="286" /><line x1="536" y1="270" x2="520" y2="286" />
+    <!-- Point 4 -->
+    <line x1="560" y1="200" x2="576" y2="216" /><line x1="576" y1="200" x2="560" y2="216" />
+    <!-- Point 5 -->
+    <line x1="620" y1="160" x2="636" y2="176" /><line x1="636" y1="160" x2="620" y2="176" />
+    <!-- Point 6 -->
+    <line x1="580" y1="310" x2="596" y2="326" /><line x1="596" y1="310" x2="580" y2="326" />
+    <!-- Point 7 -->
+    <line x1="660" y1="230" x2="676" y2="246" /><line x1="676" y1="230" x2="660" y2="246" />
+    <!-- Point 8 -->
+    <line x1="480" y1="380" x2="496" y2="396" /><line x1="496" y1="380" x2="480" y2="396" />
+    <!-- Point 9 -->
+    <line x1="640" y1="290" x2="656" y2="306" /><line x1="656" y1="290" x2="640" y2="306" />
+    <!-- Point 10 -->
+    <line x1="710" y1="160" x2="726" y2="176" /><line x1="726" y1="160" x2="710" y2="176" />
+  </g>
+
+  <!-- Decision Boundary Callout Box -->
+  <g transform="translate(380, 100)">
+    <rect x="0" y="0" width="310" height="46" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" />
+    <text x="15" y="20" font-size="13" font-weight="bold" fill="#38bdf8">Decision Boundary: θᵀx = 0</text>
+    <text x="15" y="36" font-size="11" fill="#cbd5e1">θ₀ + θ₁x₁ + θ₂x₂ = 0  ⟹  P(y = 1) = 0.50</text>
+  </g>
+
+  <!-- Legend at Bottom -->
+  <g transform="translate(180, 460)">
+    <circle cx="0" cy="0" r="6" fill="#06b6d4" stroke="#f8fafc" stroke-width="1" />
+    <text x="15" y="4" font-size="12" fill="#cbd5e1">Class 0: Benign (y = 0)</text>
+
+    <g stroke="#f43f5e" stroke-width="2" transform="translate(200, 0)">
+      <line x1="-5" y1="-5" x2="5" y2="5" /><line x1="5" y1="-5" x2="-5" y2="5" />
+    </g>
+    <text x="215" y="4" font-size="12" fill="#cbd5e1">Class 1: Malignant (y = 1)</text>
+
+    <line x1="410" y1="0" x2="435" y2="0" stroke="#38bdf8" stroke-width="3" />
+    <text x="445" y="4" font-size="12" fill="#cbd5e1">Decision Boundary (P = 0.5)</text>
+  </g>
+</svg>
